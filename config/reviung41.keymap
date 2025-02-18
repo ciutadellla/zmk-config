@@ -8,6 +8,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/rgb.h>
 
 #include <dt-bindings/led/led.h>
 &pinctrl {
@@ -85,64 +87,436 @@ nice_view_spi: &spi0 {
     };
 };
 
+ZMK_UNICODE_PAIR(n_tilde,   N0, N0, F, N1,   N0, N0, D, N1)
+ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
+
+&lt { quick_tap_ms = <200>; };
+
+&mt { tapping-term-ms = <400>; };
+
 / {
-        keymap {
-                compatible = "zmk,keymap";
-
-                default_layer {
-// -------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  |   BSPC    |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |    '      |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | SHFT(RET) |
-//                         | ALT | LWR | SPC | RSE  | ALT |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &mt RSHFT RET
-                        &kp LALT  &mo 1 &kp SPACE &mo 2  &kp RGUI
-                        >;
-                };
-
-                lower_layer {
-// ------------------------------------------------------------------------------------
-// |    |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  |      DEL    |
-// |    |  _  |  +  |  {  |  }  | "|" |   | LFT | DWN |  UP | RGT |  `  |       ~     |
-// |    | ESC | GUI | ALT | CAPS|  "  |   | HOME| END | PGUP| PGDN| PRSC| SHFT(SPACE) |
-//                       |     |     | RET | ADJ |     |
-                        bindings = <
-   &trans &kp EXCL  &kp AT      &kp HASH &kp DLLR &kp PRCNT      &kp CARET &kp AMPS &kp ASTRK &kp LPAR  &kp RPAR  &kp DEL
-   &trans &kp UNDER &kp PLUS    &kp LBRC &kp RBRC &kp PIPE       &kp LEFT  &kp DOWN &kp UP    &kp RIGHT &kp GRAVE &kp TILDE
-   &trans &kp ESC   &kp LGUI    &kp LALT &kp CLCK &kp DQT        &kp HOME  &kp END  &kp PG_UP &kp PG_DN &kp PSCRN &mt RSHFT SPACE
-                                 &trans      &trans       &kp RET        &mo 3       &trans
-                        >;
-                };
-
-                raise_layer {
-// ----------------------------------------------------------------------------
-// |    |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | DEL |
-// |    |  -  |  =  |  [  |  ]  |  \  |   | F1  | F2  | F3  | F4  | F5  | F6  |
-// |    | ESC | GUI | ALT | CAPS|  "  |   | F7  | F8  | F9  | F10 | F11 | F12 |
-//                       |     | ADJ | BSPC |    |     |
-                        bindings = <
-   &trans &kp N1    &kp N2    &kp N3    &kp N4    &kp N5        &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp DEL
-   &trans &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT  &kp BSLH      &kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6
-   &trans &kp ESC   &kp LGUI  &kp RALT  &kp CLCK  &kp DQT       &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-                                &trans      &mo 3       &kp BSPC        &trans      &trans
-                        >;
-                };
-
-                adjust_layer {
-// -----------------------------------------------------------------------------------------
-// | RGB BRI+ | RGB SAT+ | RGB HUE+ | RGB ANI+ |    | RGB TOG |   |  BT1  | BT2 | BT3 | BT4 | BT5 | BT CLR |
-// | RGB BRI- | RGB SAT- | RGB HUE- | RGB ANI- |    |         |   |       |     |     |     |     |        |
-// |          |          |          |          |    |         |   | RESET |     |     |     |     |        |
-//                                              |     |     |     |     |     |
-                        bindings = <
-   &rgb_ug RGB_BRI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_EFF &none &rgb_ug RGB_TOG    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_CLR
-   &rgb_ug RGB_BRD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_EFR &none &none              &none        &none        &none        &none        &none        &none
-   &none           &none           &none           &none           &none &none              &sys_reset       &none        &none        &none        &none        &none
-                                                             &trans      &trans       &tog 3        &trans      &trans
-                        >;
-                };
+    macros {
+        cut: zcut {
+            label = "cut";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCMD>,
+                <&macro_tap>,
+                <&kp X>,
+                <&macro_release>,
+                <&kp LCMD>;
         };
+
+        copy: zcopy {
+            label = "copy";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCMD>,
+                <&macro_tap>,
+                <&kp C>,
+                <&macro_release>,
+                <&kp LCMD>;
+        };
+
+        paste: zpaste {
+            label = "paste";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCMD>,
+                <&macro_tap>,
+                <&kp V>,
+                <&macro_release>,
+                <&kp LCMD>;
+        };
+
+        CreateCtrlGroup1: CreateCtrlGroup1 {
+            label = "CreateCtrlGroup1";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp N1>,
+                <&macro_release>,
+                <&kp LALT>;
+        };
+
+        CreateCtrlGroup2: CreateCtrlGroup2 {
+            label = "CreateCtrlGroup2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp N2>,
+                <&macro_release>,
+                <&kp LALT>;
+        };
+
+        CreateCtrlGroup3: CreateCtrlGroup3 {
+            label = "CreateCtrlGroup3";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp N3>,
+                <&macro_release>,
+                <&kp LALT>;
+        };
+
+        CreateCtrlGroup4: CreateCtrlGroup4 {
+            label = "CreateCtrlGroup4";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp N4>,
+                <&macro_release>,
+                <&kp LALT>;
+        };
+
+        CreateCtrlGroup5: CreateCtrlGroup5 {
+            label = "CreateCtrlGroup5";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp N5>,
+                <&macro_release>,
+                <&kp LALT>;
+        };
+
+        CreateLocation1: CreateLocation1 {
+            label = "CreateLocation1";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp F5>,
+                <&macro_release>,
+                <&kp LCTRL>;
+        };
+
+        CreateLocation2: CreateLocation2 {
+            label = "CreateLocation2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp F6>,
+                <&macro_release>,
+                <&kp LCTRL>;
+        };
+
+        CreateLocation3: CreateLocation3 {
+            label = "CreateLocation3";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp F7>,
+                <&macro_release>,
+                <&kp LCTRL>;
+        };
+
+        CreateLocation4: CreateLocation4 {
+            label = "CreateLocation4";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp F8>,
+                <&macro_release>,
+                <&kp LCTRL>;
+        };
+    };
+
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;                // repeat on tap-into-hold
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        lh_pht: left_hand_positional_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "POSITIONAL_HOLD_TAP";
+            #binding-cells = <2>;
+            flavor = "tap-unless-interrupted";
+            tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
+            quick-tap-ms = <200>;
+            bindings = <&kp>, <&kp>;
+
+            hold-trigger-key-positions = <5 6 7 8 9 10>;    // <---[[right-hand keys]]
+        };
+
+        bhm: balanced_homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "BALANCED_HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;    // <---[[moderate duration]]
+            quick-tap-ms = <0>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+
+        // hold-tap
+        // pht: positional_hold_tap {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     label = "POSITIONAL_HOLD_TAP";
+        //     #binding-cells = <2>;
+        //     flavor = "hold-preferred";
+        //     tapping-term-ms = <400>;
+        //     quick-tap-ms = <200>;
+        //     bindings = <&kp>, <&kp>;
+        //     hold-trigger-key-positions = <1>;    // <---[[the W key]]
+        // };
+        // TabDance
+
+        tdTabCaps: tap_dance_2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp TAB>, <&kp CAPS>;
+        };
+
+        tdTilde: tap_dance_tilde {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_TILDE";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp N>, <&n_tilde>;
+        };
+
+        tdEuro: tap_dance_euro {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_EURO";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp E>, <&euro_sign>;
+        };
+
+        //Starcraf tapdance
+
+        tdStarcraft: tap_dance_7 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_7";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp K_MUTE>, <&tog 5>;
+        };
+
+        tdCSCrt1: tdCreateSelectCrt1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCreateSelectCrt1";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N1>, <&CreateCtrlGroup1>;
+        };
+
+        tdCSCrt2: tdCreateSelectCrt2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCreateSelectCrt2";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N2>, <&CreateCtrlGroup2>;
+        };
+
+        tdCSCrt3: tdCreateSelectCrt3 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCreateSelectCrt3";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N3>, <&CreateCtrlGroup3>;
+        };
+
+        tdCSCrt4: tdCreateSelectCrt4 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCreateSelectCrt4";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N4>, <&CreateCtrlGroup4>;
+        };
+
+        tdCSCrt5: tdCreateSelectCrt5 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCreateSelectCrt5";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp N5>, <&CreateCtrlGroup5>;
+        };
+
+        tdCSLoc1: tdCSLoc1 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCSLoc1";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp F5>, <&CreateLocation1>;
+        };
+
+        tdCSLoc2: tdCSLoc2 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCSLoc2";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp F6>, <&CreateLocation2>;
+        };
+
+        tdCSLoc3: tdCSLoc3 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCSLoc3";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp F7>, <&CreateLocation3>;
+        };
+
+        tdCSLoc4: tdCSLoc4 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "tdCSLoc4";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp F8>, <&CreateLocation4>;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        comboTab {
+            bindings = <&kp TAB>;
+            key-positions = <13 14>;
+        };
+
+        comboCaps {
+            bindings = <&kp CAPSLOCK>;
+            key-positions = <12 13>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            // --------------------------------------------------------------------------------------------------------
+            // | ESC      |  Q  |  W  |  E  |  R  |  T  |            |  Y  |  U   |  I  |  O  |  P  |   BKSP           |
+            // | TAB/Caps |  A  |  S  |  D  |  F  |  G  |            |  H  |  J   |  K  |  L  |  ;  |    '             |
+            // | LGUI     |  Z  |  X  |  C  |  V  |  B  |            |  N  |  M   |  ,  |  .  |  /  | tdStarcraft(RET) |
+            //                           DEL | LWR/BSPC | SPC/layer3 | RSE/RET  | INSERT |
+
+            bindings = <
+&none    &kp Q         &kp W               &kp E       &kp R       &kp T               &kp Y     &kp U       &kp I       &kp O                &kp P            &tdStarcraft
+&kp TAB  &hm LSHIFT A  &hm LEFT_CONTROL S  &hm LALT D  &hm LGUI F  &kp G               &kp H     &hm RGUI J  &hm RALT K  &hm RIGHT_CONTROL L  &hm RSHIFT SEMI  &kp SQT
+&none    &kp Z         &kp X               &kp C       &kp V       &kp B               &tdTilde  &kp M       &kp COMMA   &kp DOT              &kp FSLH         &none
+                                           &lt 4 ESC   &lt 1 BSPC         &lt 3 SPACE            &lt 2 RET   &kp INSERT
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        lower_layer {
+            // ----------------------------------------------------------------------------------
+            // |    |  1  |  2  |  3  |  4  |  5  |      |  6  |  7  |  8  |  9  |  0  |    DEL    |
+            // |CAPS|  -  |  +  |  [  |  ]  |  \  |      | ~  | LFT |  DWN | UP |  RGT  |     `    |
+            // |  SHFT | CTRL| ALT | GUI | ||  "  |      | HOME| END | PGUP| PGDN| PRSC| SHFT(RET)
+            //                         |    |     |  RET | BTLAYER |   |
+
+            bindings = <
+&trans  &kp N1     &kp N2    &kp N3    &kp N4    &kp N5             &kp N6    &kp N7         &kp N8       &kp N9     &kp N0  &trans
+&trans  &kp MINUS  &kp PLUS  &kp LBKT  &kp RBKT  &kp BSLH           &kp LEFT  &kp DOWN       &kp UP       &kp RIGHT  &trans  &kp GRAVE
+&trans  &trans     &trans    &trans    &trans    &trans             &trans    &kp PAGE_DOWN  &kp PAGE_UP  &trans     &trans  &trans
+                             &trans    &trans              &kp RET            &mo 4          &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp DOWN_ARROW UP_ARROW>;
+        };
+
+        raise_layer {
+            // ----------------------------------------------------------------------------
+            // |    |  !  |  @  |  #  |  $  |  %  |      |  ^  |  &  |  *  |  (  |  )  | DEL |
+            // |    |  _  |  =  |  {  |  }  |  |  |      | F1  | F2  | F3  | F4  | F5  | F6  |
+            // |    |SHFT| CTRL | ALT | GUI|   "  |      | F7  | F8  | F9  | F10 | F11 | F12 |
+            //                       |     |      | BKSP |    |     |
+
+            bindings = <
+&trans  &kp EXCL   &kp AT     &kp HASH  &kp DLLR  &kp PRCNT            &kp CARET  &kp AMPS  &kp ASTERISK  &kp LPAR  &kp RPAR  &trans
+&trans  &kp UNDER  &kp EQUAL  &kp LBRC  &kp RBRC  &kp PIPE             &kp F1     &kp F2    &kp F3        &kp F4    &kp F5    &kp F6
+&trans  &trans     &trans     &trans    &trans    &trans               &kp F7     &kp F8    &kp F9        &kp F10   &kp F11   &kp F12
+                              &trans    &mo 4                &kp BSPC             &trans    &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
+        };
+
+        adjust_layer {
+            // -------------------------------------------------------------------------------------------------------
+            // | BRI+ | SAT+ | HUE+ | ANI+ | speed+ | RGB TOG |     | RESET |     |        |        |C_VOL_DN|C_VOL_UP|
+            // | BRI- | SAT- | HUE- | ANI+ | speed- | EP_TOG  |     |       |     |        |        |C_BRI_DN|C_BRI_UP|
+            // |      |      |      |      |        |         |     | none  |     |        |  LANG  | 
+            //                                      |         |     |       |     |        |
+
+            bindings = <
+&rgb_ug RGB_BRI                   &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_EFF  &rgb_ug RGB_SPI  &rgb_ug RGB_TOG            &reset  &none   &none   &none  &kp C_VOL_DN  &kp C_VOLUME_UP
+&rgb_ug RGB_BRD                   &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_EFR  &rgb_ug RGB_SPD  &ext_power EP_TOG          &none   &none   &none   &none  &kp C_BRI_DN  &kp C_BRI_UP
+&rgb_ug RGB_COLOR_HSB(286,86,48)  &none            &none            &none            &none            &none                      &none   &none   &none   &none  &trans        &kp LC(SPACE)
+                                                                    &trans           &trans                              &trans          &trans  &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
+        };
+
+        bt_layer {
+            // --------------------------------------------------------------------------------------------
+            // |  BT1  | BT2    | BT3 | BT4 | BT5 | BT CLR |      |      |        |     |     |     |     |
+            // |       |        |     |     |     |        |      |      |        |     |     |     |     |
+            // |       |        |     |     |     |        |      |      |        |     |     |     |     |
+            //                              |     |        |      |      |        |
+
+            bindings = <
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR         &none  &kp N7  &kp N8  &kp N9  &none  &trans
+&none         &none         &none         &none         &none         &none              &none  &kp N4  &kp N5  &kp N6  &none  &none
+&none         &none         &none         &none         &none         &none              &none  &kp N1  &kp N2  &kp N3  &none  &none
+                                          &none         &none                     &none         &none   &kp N0
+            >;
+
+            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
+        };
+
+        starCraft {
+            bindings = <
+&kp ESC     &kp Q  &kp W  &kp E   &kp R   &kp T          &tdCSCrt1  &tdCSCrt2  &tdCSCrt3  &tdCSCrt4  &tdCSCrt5  &trans
+&tdTabCaps  &kp A  &kp S  &kp D   &kp F   &kp G          &tdCSLoc1  &tdCSLoc2  &tdCSLoc3  &tdCSLoc4  &kp F1     &kp F2
+&kp LSHIFT  &kp Z  &kp X  &kp C   &kp V   &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH   &kp RET
+                          &tog 0  &trans         &trans             &tog 5     &tog 1
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+    };
 };
