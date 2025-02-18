@@ -5,75 +5,6 @@
  *
  * SPDX-License-Identifier: MIT
  */
-#include <dt-bindings/led/led.h>
-&pinctrl {
-
-    spi3_default: spi3_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 7)>,
-                    <NRF_PSEL(SPIM_SCK, 0, 5)>;
-        };
-    };
-
-    spi3_sleep: spi3_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>,
-                    <NRF_PSEL(SPIM_MISO, 0, 7)>,
-                    <NRF_PSEL(SPIM_SCK, 0, 5)>;
-            low-power-enable;
-        };
-    };
-
-    spi0_default: spi0_default {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 1, 17)>,
-                <NRF_PSEL(SPIM_MOSI, 1, 20)>,
-                <NRF_PSEL(SPIM_MISO, 0, 25)>; /* GPIO0 19 is not broken on a nice!nano.*/
-        };
-    };
-    spi0_sleep: spi0_sleep {
-        group1 {
-            psels = <NRF_PSEL(SPIM_SCK, 1, 17)>,
-                <NRF_PSEL(SPIM_MOSI, 1, 20)>,
-                <NRF_PSEL(SPIM_MISO, 0, 25)>; /* GPIO0 19 is not broken on a nice!nano.*/
-            low-power-enable;
-        };
-    };
-
-};
-
-nice_view_spi: &spi0 {
-    compatible = "nordic,nrf-spim";
-    pinctrl-0 = <&spi0_default>;
-    pinctrl-1 = <&spi0_sleep>;
-    pinctrl-names = "default", "sleep";
-    cs-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
-};
-
-&spi3 {
-    compatible = "nordic,nrf-spim";
-    status = "okay";
-
-    pinctrl-0 = <&spi3_default>;
-    pinctrl-1 = <&spi3_sleep>;
-    pinctrl-names = "default", "sleep";
-
-    led_strip: ws2812@0 {
-        compatible = "worldsemi,ws2812-spi";
-
-        /* SPI */
-        reg = <0>; /* Ignored, but necessary for SPI bindings */
-        spi-max-frequency = <4000000>;
-
-        /* WS2812 */
-        chain-length = <11>;
-        spi-one-frame = <0x70>;
-        spi-zero-frame = <0x40>;
-
-        color-mapping = <0x01 0x02 0x03>; /* Green, Red, Blue */
-    };
-};
 
 
 #include <dt-bindings/zmk/matrix_transform.h>
@@ -82,7 +13,6 @@ nice_view_spi: &spi0 {
     chosen {
         zmk,kscan = &kscan0;
         zmk,matrix_transform = &default_transform;
-        zmk,underglow = &led_strip;
     };
 
     default_transform: keymap_transform_0 {
