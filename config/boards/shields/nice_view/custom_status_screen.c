@@ -14,13 +14,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 static struct zmk_widget_status status_widget;
 #endif
 
-
 #include <zmk/display/widgets/bongo_cat.h>
 static struct zmk_widget_bongo_cat bongo_cat_widget;
-
-
-
-
 
 
 lv_obj_t *zmk_display_status_screen() {
