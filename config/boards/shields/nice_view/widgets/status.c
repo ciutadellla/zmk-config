@@ -26,8 +26,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/keymap.h>
 #include <zmk/wpm.h>
  
-#include "bongo_cat.h"
-// #include <bongo_cat.h>
+// #include "bongo_cat.h"
+#include <bongo_cat.h>
 // #include <./bongo_cat.h>
 // #include <widgets/bongo_cat.h>
 // #include <zmk/display/widgets/bongo_cat.h>
