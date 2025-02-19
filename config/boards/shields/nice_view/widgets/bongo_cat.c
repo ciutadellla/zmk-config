@@ -1,13 +1,7 @@
-/*
- * Copyright (c) 2021 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include <zmk/event_manager.h>
 #include <zmk/events/wpm_state_changed.h>
-
 #include <zephyr/logging/log.h>
+
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #include "bongo_cat.h"
@@ -49,7 +43,7 @@ const void *fast_images[] = {
 
 void set_img_src(void *var, lv_anim_value_t val) {
     lv_obj_t *img = (lv_obj_t *)var;
-    lv_img_set_src(img, images[val]);
+    lv_img_set_src(img, images[(int)val]);  // Cast to int
 }
 
 void update_bongo_cat_wpm(struct zmk_widget_bongo_cat *widget, int wpm) {
@@ -94,7 +88,6 @@ void update_bongo_cat_wpm(struct zmk_widget_bongo_cat *widget, int wpm) {
 
 int zmk_widget_bongo_cat_init(struct zmk_widget_bongo_cat *widget, lv_obj_t *parent) {
     widget->obj = lv_img_create(parent, NULL);
-
     lv_img_set_auto_size(widget->obj, true);
     update_bongo_cat_wpm(widget, 0);
 
