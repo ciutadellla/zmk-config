@@ -25,11 +25,11 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/endpoints.h>
 #include <zmk/keymap.h>
 #include <zmk/wpm.h>
-#include "widgets/bongo_cat.h"
+// #include "widgets/bongo_cat.h"
 
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
-static struct zmk_widget_bongo_cat bongo_cat_widget;
+// static struct zmk_widget_bongo_cat bongo_cat_widget;
 
 struct output_status_state {
     struct zmk_endpoint_instance selected_endpoint;
@@ -54,8 +54,8 @@ static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_st
 
 
 
-    zmk_widget_bongo_cat_init(&bongo_cat_widget, screen);
-    lv_obj_align(zmk_widget_bongo_cat_obj(&bongo_cat_widget), NULL, LV_ALIGN_CENTER, 0, 0);
+    // zmk_widget_bongo_cat_init(&bongo_cat_widget, screen);
+    // lv_obj_align(zmk_widget_bongo_cat_obj(&bongo_cat_widget), NULL, LV_ALIGN_CENTER, 0, 0);
 
 
 
