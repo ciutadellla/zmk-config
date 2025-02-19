@@ -72,34 +72,34 @@
  static void set_animation(lv_obj_t *animing, struct bongo_cat_wpm_status_state state) {
      if (state.wpm < 5) {
          if (current_anim_state != anim_state_idle) {
-             lv_animimg_set_src(animing, SRC(idle_imgs));
-             lv_animimg_set_duration(animing, ANIMATION_SPEED_IDLE);
-             lv_animimg_set_repeat_count(animing, LV_ANIM_REPEAT_INFINITE);
-             lv_animimg_start(animing);
+             lv_anim_set_src(animing, SRC(idle_imgs));
+             lv_anim_set_duration(animing, ANIMATION_SPEED_IDLE);
+             lv_anim_set_repeat_count(animing, LV_ANIM_REPEAT_INFINITE);
+             lv_anim_start(animing);
              current_anim_state = anim_state_idle;
          }
      } else if (state.wpm < 30) {
          if (current_anim_state != anim_state_slow) {
-             lv_animimg_set_src(animing, SRC(slow_imgs));
-             lv_animimg_set_duration(animing, ANIMATION_SPEED_SLOW);
-             lv_animimg_set_repeat_count(animing, LV_ANIM_REPEAT_INFINITE);
-             lv_animimg_start(animing);
+             lv_anim_set_src(animing, SRC(slow_imgs));
+             lv_anim_set_duration(animing, ANIMATION_SPEED_SLOW);
+             lv_anim_set_repeat_count(animing, LV_ANIM_REPEAT_INFINITE);
+             lv_anim_start(animing);
              current_anim_state = anim_state_slow;
          }
      } else if (state.wpm < 70) {
          if (current_anim_state != anim_state_mid) {
-             lv_animimg_set_src(animing, SRC(mid_imgs));
-             lv_animimg_set_duration(animing, ANIMATION_SPEED_MID);
-             lv_animimg_set_repeat_count(animing, LV_ANIM_REPEAT_INFINITE);
-             lv_animimg_start(animing);
+             lv_anim_set_src(animing, SRC(mid_imgs));
+             lv_anim_set_duration(animing, ANIMATION_SPEED_MID);
+             lv_anim_set_repeat_count(animing, LV_ANIM_REPEAT_INFINITE);
+             lv_anim_start(animing);
              current_anim_state = anim_state_mid;
          }
      } else {
          if (current_anim_state != anim_state_fast) {
-             lv_animimg_set_src(animing, SRC(fast_imgs));
-             lv_animimg_set_duration(animing, ANIMATION_SPEED_FAST);
-             lv_animimg_set_repeat_count(animing, LV_ANIM_REPEAT_INFINITE);
-             lv_animimg_start(animing);
+             lv_anim_set_src(animing, SRC(fast_imgs));
+             lv_anim_set_duration(animing, ANIMATION_SPEED_FAST);
+             lv_anim_set_repeat_count(animing, LV_ANIM_REPEAT_INFINITE);
+             lv_anim_start(animing);
              current_anim_state = anim_state_fast;
          }
      }
@@ -111,8 +111,10 @@
  };
  
  void bongo_cat_wpm_status_update_cb(struct bongo_cat_wpm_status_state state) {
-     // Directly access and update the single widget
-     set_animation(widget->obj, state);
+     struct zmk_widget_bongo_cat *widget;
+     SYS_SLIST_FOR_EACH_CONTAINER(&widgets, widget, node) {
+         set_animation(widget->obj, state);
+     }
  }
  
  ZMK_DISPLAY_WIDGET_LISTENER(widget_bongo_cat, struct bongo_cat_wpm_status_state,
@@ -124,7 +126,6 @@
      widget->obj = lv_animimg_create(parent);
      lv_obj_center(widget->obj);
  
-     // Only a single widget, no need to add to a list anymore
      widget_bongo_cat_init();
  
      return 0;
