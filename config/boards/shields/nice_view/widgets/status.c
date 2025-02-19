@@ -25,7 +25,9 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/endpoints.h>
 #include <zmk/keymap.h>
 #include <zmk/wpm.h>
-#include <bongo_cat.h>
+
+#include <zmk/display/widgets/bongo_cat.h>
+
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
 static struct zmk_widget_bongo_cat bongo_cat_widget;
