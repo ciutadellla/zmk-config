@@ -20,4 +20,4 @@
 ---
 include:
   - board: nice_nano_v2
-    shield: reviung41 nice_view_adapter nice_view dongle_display_view_pro_micro
+    shield: reviung41 nice_view_adapter dongle_display_view_pro_micro
