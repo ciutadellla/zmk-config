@@ -27,7 +27,7 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/wpm.h>
  
 
-#include <widgets/bongo_cat.h>
+#include "widgets/bongo_cat.h"
 
 
 
