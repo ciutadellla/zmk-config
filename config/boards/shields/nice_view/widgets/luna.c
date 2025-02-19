@@ -12,7 +12,7 @@
 #include <logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
-#include <zmk/display/widgets/luna.h>
+#include <widgets/luna.h>
 
 #if IS_ENABLED(CONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED)
 #error "Luna only works with the system work queue currently"

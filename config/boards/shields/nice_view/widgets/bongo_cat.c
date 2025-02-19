@@ -10,7 +10,7 @@
 #include <logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
-#include <zmk/display/widgets/bongo_cat.h>
+#include <widgets/bongo_cat.h>
 
 #if IS_ENABLED(CONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED)
 #error "Bongo cat only works with the system work queue currently"
