@@ -27,8 +27,8 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/wpm.h>
  
 // #include "bongo_cat.h"
-#include <bongo_cat.h>
-// #include <./bongo_cat.h>
+// #include <bongo_cat.h>
+#include <./bongo_cat.h>
 // #include <widgets/bongo_cat.h>
 // #include <zmk/display/widgets/bongo_cat.h>
 // #include <zmk-config/config/boards/shields/nice_view/widgets/bongo_cat.h>
