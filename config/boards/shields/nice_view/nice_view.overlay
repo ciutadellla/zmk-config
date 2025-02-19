@@ -24,7 +24,6 @@
 
 };
 
-
 nice_view_spi: &spi0 {
     status = "okay";
     nice_view: ls0xx@0 {
@@ -40,9 +39,6 @@ nice_view_spi: &spi0 {
     pinctrl-names = "default", "sleep";
     cs-gpios = <&pro_micro 0 GPIO_ACTIVE_HIGH>;
 };
-
-
-
 
 / {
     chosen {
