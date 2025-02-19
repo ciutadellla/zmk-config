@@ -182,7 +182,7 @@ static void draw_bottom(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     if (state->layer_label == NULL || strlen(state->layer_label) == 0) {
         char text[10] = {};
 
-        sprintf(text, "LAYER %i", state->layer_index);
+        sprintf(text, "CACAC %i", state->layer_index);
 
         lv_canvas_draw_text(canvas, 0, 5, 68, &label_dsc, text);
     } else {
