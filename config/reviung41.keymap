@@ -87,12 +87,19 @@ nice_view_spi: &spi0 {
     };
 };
 
+
+
+
+
+
 ZMK_UNICODE_PAIR(n_tilde,   N0, N0, F, N1,   N0, N0, D, N1)
 ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
 &lt { quick_tap_ms = <200>; };
 
 &mt { tapping-term-ms = <400>; };
+
+
 
 / {
     macros {
