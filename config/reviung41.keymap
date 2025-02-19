@@ -100,7 +100,7 @@ nice_view_spi: &spi0 {
 / {
         macros {
                 cut: zcut {
-                // label = "cut";
+                label = "cut";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -113,7 +113,7 @@ nice_view_spi: &spi0 {
                 };
 
                 copy: zcopy {
-                // label = "copy";
+                label = "copy";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -126,7 +126,7 @@ nice_view_spi: &spi0 {
                 };
 
                 paste: zpaste {
-                // label = "paste";
+                label = "paste";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -139,7 +139,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateCtrlGroup1: CreateCtrlGroup1 {
-                // label = "CreateCtrlGroup1";
+                label = "CreateCtrlGroup1";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -152,7 +152,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateCtrlGroup2: CreateCtrlGroup2 {
-                // label = "CreateCtrlGroup2";
+                label = "CreateCtrlGroup2";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -165,7 +165,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateCtrlGroup3: CreateCtrlGroup3 {
-                // label = "CreateCtrlGroup3";
+                label = "CreateCtrlGroup3";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -178,7 +178,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateCtrlGroup4: CreateCtrlGroup4 {
-                // label = "CreateCtrlGroup4";
+                label = "CreateCtrlGroup4";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -191,7 +191,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateCtrlGroup5: CreateCtrlGroup5 {
-                // label = "CreateCtrlGroup5";
+                label = "CreateCtrlGroup5";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -204,7 +204,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateLocation1: CreateLocation1 {
-                // label = "CreateLocation1";
+                label = "CreateLocation1";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -217,7 +217,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateLocation2: CreateLocation2 {
-                // label = "CreateLocation2";
+                label = "CreateLocation2";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -230,7 +230,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateLocation3: CreateLocation3 {
-                // label = "CreateLocation3";
+                label = "CreateLocation3";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -243,7 +243,7 @@ nice_view_spi: &spi0 {
                 };
 
                 CreateLocation4: CreateLocation4 {
-                // label = "CreateLocation4";
+                label = "CreateLocation4";
                 compatible = "zmk,behavior-macro";
                 #binding-cells = <0>;
                 bindings =
@@ -259,7 +259,7 @@ nice_view_spi: &spi0 {
         behaviors {
                 hm: homerow_mods {
                 compatible = "zmk,behavior-hold-tap";
-                // label = "HOMEROW_MODS";
+                label = "HOMEROW_MODS";
                 #binding-cells = <2>;
                 tapping-term-ms = <200>;
                 quick-tap-ms = <175>;                // repeat on tap-into-hold
@@ -269,7 +269,7 @@ nice_view_spi: &spi0 {
 
                 lh_pht: left_hand_positional_hold_tap {
                 compatible = "zmk,behavior-hold-tap";
-                // label = "POSITIONAL_HOLD_TAP";
+                label = "POSITIONAL_HOLD_TAP";
                 #binding-cells = <2>;
                 flavor = "tap-unless-interrupted";
                 tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
@@ -280,7 +280,7 @@ nice_view_spi: &spi0 {
 
                 bhm: balanced_homerow_mods {
                 compatible = "zmk,behavior-hold-tap";
-                // label = "BALANCED_HOMEROW_MODS";
+                label = "BALANCED_HOMEROW_MODS";
                 #binding-cells = <2>;
                 tapping-term-ms = <200>;    // <---[[moderate duration]]
                 quick-tap-ms = <0>;
@@ -290,7 +290,7 @@ nice_view_spi: &spi0 {
 
                 tdTabCaps: tap_dance_2 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "TAP_DANCE_2";
+                label = "TAP_DANCE_2";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp TAB>, <&kp CAPS>;
@@ -298,7 +298,7 @@ nice_view_spi: &spi0 {
 
                 tdTilde: tap_dance_tilde {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "TAP_DANCE_TILDE";
+                label = "TAP_DANCE_TILDE";
                 #binding-cells = <0>;
                 tapping-term-ms = <150>;
                 bindings = <&kp N>, <&n_tilde>;
@@ -306,7 +306,7 @@ nice_view_spi: &spi0 {
 
                 tdEuro: tap_dance_euro {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "TAP_DANCE_EURO";
+                label = "TAP_DANCE_EURO";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp E>, <&euro_sign>;
@@ -316,7 +316,7 @@ nice_view_spi: &spi0 {
 
                 tdStarcraft: tap_dance_7 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "TAP_DANCE_7";
+                label = "TAP_DANCE_7";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp K_MUTE>, <&tog 5>;
@@ -324,7 +324,7 @@ nice_view_spi: &spi0 {
 
                 tdCSCrt1: tdCreateSelectCrt1 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCreateSelectCrt1";
+                label = "tdCreateSelectCrt1";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp N1>, <&CreateCtrlGroup1>;
@@ -332,7 +332,7 @@ nice_view_spi: &spi0 {
 
                 tdCSCrt2: tdCreateSelectCrt2 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCreateSelectCrt2";
+                label = "tdCreateSelectCrt2";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp N2>, <&CreateCtrlGroup2>;
@@ -340,7 +340,7 @@ nice_view_spi: &spi0 {
 
                 tdCSCrt3: tdCreateSelectCrt3 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCreateSelectCrt3";
+                label = "tdCreateSelectCrt3";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp N3>, <&CreateCtrlGroup3>;
@@ -348,7 +348,7 @@ nice_view_spi: &spi0 {
 
                 tdCSCrt4: tdCreateSelectCrt4 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCreateSelectCrt4";
+                label = "tdCreateSelectCrt4";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp N4>, <&CreateCtrlGroup4>;
@@ -356,7 +356,7 @@ nice_view_spi: &spi0 {
 
                 tdCSCrt5: tdCreateSelectCrt5 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCreateSelectCrt5";
+                label = "tdCreateSelectCrt5";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp N5>, <&CreateCtrlGroup5>;
@@ -364,7 +364,7 @@ nice_view_spi: &spi0 {
 
                 tdCSLoc1: tdCSLoc1 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCSLoc1";
+                label = "tdCSLoc1";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp F5>, <&CreateLocation1>;
@@ -372,7 +372,7 @@ nice_view_spi: &spi0 {
 
                 tdCSLoc2: tdCSLoc2 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCSLoc2";
+                label = "tdCSLoc2";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp F6>, <&CreateLocation2>;
@@ -380,7 +380,7 @@ nice_view_spi: &spi0 {
 
                 tdCSLoc3: tdCSLoc3 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCSLoc3";
+                label = "tdCSLoc3";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp F7>, <&CreateLocation3>;
@@ -388,7 +388,7 @@ nice_view_spi: &spi0 {
 
                 tdCSLoc4: tdCSLoc4 {
                 compatible = "zmk,behavior-tap-dance";
-                // label = "tdCSLoc4";
+                label = "tdCSLoc4";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
                 bindings = <&kp F8>, <&CreateLocation4>;
