@@ -25,8 +25,10 @@ LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 #include <zmk/endpoints.h>
 #include <zmk/keymap.h>
 #include <zmk/wpm.h>
+#include <bongo_cat.h>
 
 static sys_slist_t widgets = SYS_SLIST_STATIC_INIT(&widgets);
+static struct zmk_widget_bongo_cat bongo_cat_widget;
 
 struct output_status_state {
     struct zmk_endpoint_instance selected_endpoint;
@@ -46,6 +48,15 @@ struct wpm_status_state {
 
 static void draw_top(lv_obj_t *widget, lv_color_t cbuf[], const struct status_state *state) {
     lv_obj_t *canvas = lv_obj_get_child(widget, 0);
+
+
+
+
+
+    zmk_widget_bongo_cat_init(&bongo_cat_widget, screen);
+    lv_obj_align(zmk_widget_bongo_cat_obj(&bongo_cat_widget), NULL, LV_ALIGN_CENTER, 0, 0);
+
+
 
     lv_draw_label_dsc_t label_dsc;
     init_label_dsc(&label_dsc, LVGL_FOREGROUND, &lv_font_montserrat_16, LV_TEXT_ALIGN_RIGHT);
@@ -182,7 +193,7 @@ static void draw_bottom(lv_obj_t *widget, lv_color_t cbuf[], const struct status
     if (state->layer_label == NULL || strlen(state->layer_label) == 0) {
         char text[10] = {};
 
-        sprintf(text, "CACAC %i", state->layer_index);
+        sprintf(text, "LAYCER %i", state->layer_index);
 
         lv_canvas_draw_text(canvas, 0, 5, 68, &label_dsc, text);
     } else {
