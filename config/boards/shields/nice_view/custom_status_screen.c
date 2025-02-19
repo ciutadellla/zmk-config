@@ -5,8 +5,8 @@
  *
  */
 
-#include "widgets/status.h"
-#include <widgets/bongo_cat.h>
+// #include "widgets/status.h"
+// #include <widgets/bongo_cat.h>
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
