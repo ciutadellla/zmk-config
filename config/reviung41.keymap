@@ -472,7 +472,7 @@ nice_view_spi: &spi0 {
             bindings = <
                 &rgb_ug RGB_BRI                   &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_EFF  &rgb_ug RGB_SPI  &rgb_ug RGB_TOG            &reset  &none   &none   &none  &kp C_VOL_DN  &kp C_VOLUME_UP
                 &rgb_ug RGB_BRD                   &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_EFR  &rgb_ug RGB_SPD  &ext_power EP_TOG          &none   &none   &none   &none  &kp C_BRI_DN  &kp C_BRI_UP
-                &rgb_ug RGB_COLOR_HSB(286,86,48)  &none            &none            &none            &none            &none                      &none   &none   &none   &none  &trans        &kp LC(SPACE)
+                &trans  &none            &none            &none            &none            &none                      &none   &none   &none   &none  &trans        &trans
                                                                                 &trans           &trans                              &trans          &trans  &trans
             >;
             sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
