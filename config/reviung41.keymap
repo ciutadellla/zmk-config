@@ -19,8 +19,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 &mt { tapping-term-ms = <400>; };
 
 
-
-
 #include <dt-bindings/led/led.h>
 &pinctrl {
 
@@ -65,6 +63,8 @@ nice_view_spi: &spi0 {
     pinctrl-1 = <&spi0_sleep>;
     pinctrl-names = "default", "sleep";
     cs-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
+    a-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;//gpio1 1 is P1.01 (101)
+    b-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;//gpio1 2 is P1.02 (102)
 };
 
 &spi3 {
