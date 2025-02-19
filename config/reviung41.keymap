@@ -98,6 +98,317 @@ nice_view_spi: &spi0 {
 };
 
 / {
+        macros {
+                cut: zcut {
+                label = "cut";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LCMD>,
+                        <&macro_tap>,
+                        <&kp X>,
+                        <&macro_release>,
+                        <&kp LCMD>;
+                };
+
+                copy: zcopy {
+                label = "copy";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LCMD>,
+                        <&macro_tap>,
+                        <&kp C>,
+                        <&macro_release>,
+                        <&kp LCMD>;
+                };
+
+                paste: zpaste {
+                label = "paste";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LCMD>,
+                        <&macro_tap>,
+                        <&kp V>,
+                        <&macro_release>,
+                        <&kp LCMD>;
+                };
+
+                CreateCtrlGroup1: CreateCtrlGroup1 {
+                label = "CreateCtrlGroup1";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LALT>,
+                        <&macro_tap>,
+                        <&kp N1>,
+                        <&macro_release>,
+                        <&kp LALT>;
+                };
+
+                CreateCtrlGroup2: CreateCtrlGroup2 {
+                label = "CreateCtrlGroup2";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LALT>,
+                        <&macro_tap>,
+                        <&kp N2>,
+                        <&macro_release>,
+                        <&kp LALT>;
+                };
+
+                CreateCtrlGroup3: CreateCtrlGroup3 {
+                label = "CreateCtrlGroup3";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LALT>,
+                        <&macro_tap>,
+                        <&kp N3>,
+                        <&macro_release>,
+                        <&kp LALT>;
+                };
+
+                CreateCtrlGroup4: CreateCtrlGroup4 {
+                label = "CreateCtrlGroup4";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LALT>,
+                        <&macro_tap>,
+                        <&kp N4>,
+                        <&macro_release>,
+                        <&kp LALT>;
+                };
+
+                CreateCtrlGroup5: CreateCtrlGroup5 {
+                label = "CreateCtrlGroup5";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LALT>,
+                        <&macro_tap>,
+                        <&kp N5>,
+                        <&macro_release>,
+                        <&kp LALT>;
+                };
+
+                CreateLocation1: CreateLocation1 {
+                label = "CreateLocation1";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LCTRL>,
+                        <&macro_tap>,
+                        <&kp F5>,
+                        <&macro_release>,
+                        <&kp LCTRL>;
+                };
+
+                CreateLocation2: CreateLocation2 {
+                label = "CreateLocation2";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LCTRL>,
+                        <&macro_tap>,
+                        <&kp F6>,
+                        <&macro_release>,
+                        <&kp LCTRL>;
+                };
+
+                CreateLocation3: CreateLocation3 {
+                label = "CreateLocation3";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LCTRL>,
+                        <&macro_tap>,
+                        <&kp F7>,
+                        <&macro_release>,
+                        <&kp LCTRL>;
+                };
+
+                CreateLocation4: CreateLocation4 {
+                label = "CreateLocation4";
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings =
+                        <&macro_press>,
+                        <&kp LCTRL>,
+                        <&macro_tap>,
+                        <&kp F8>,
+                        <&macro_release>,
+                        <&kp LCTRL>;
+                };
+        };
+
+        behaviors {
+                hm: homerow_mods {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HOMEROW_MODS";
+                #binding-cells = <2>;
+                tapping-term-ms = <200>;
+                quick-tap-ms = <175>;                // repeat on tap-into-hold
+                flavor = "tap-preferred";
+                bindings = <&kp>, <&kp>;
+                };
+
+                lh_pht: left_hand_positional_hold_tap {
+                compatible = "zmk,behavior-hold-tap";
+                label = "POSITIONAL_HOLD_TAP";
+                #binding-cells = <2>;
+                flavor = "tap-unless-interrupted";
+                tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
+                quick-tap-ms = <200>;
+                bindings = <&kp>, <&kp>;
+                hold-trigger-key-positions = <5 6 7 8 9 10>;    // <---[[right-hand keys]]
+                };
+
+                bhm: balanced_homerow_mods {
+                compatible = "zmk,behavior-hold-tap";
+                label = "BALANCED_HOMEROW_MODS";
+                #binding-cells = <2>;
+                tapping-term-ms = <200>;    // <---[[moderate duration]]
+                quick-tap-ms = <0>;
+                flavor = "balanced";
+                bindings = <&kp>, <&kp>;
+                };
+
+                tdTabCaps: tap_dance_2 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "TAP_DANCE_2";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp TAB>, <&kp CAPS>;
+                };
+
+                tdTilde: tap_dance_tilde {
+                compatible = "zmk,behavior-tap-dance";
+                label = "TAP_DANCE_TILDE";
+                #binding-cells = <0>;
+                tapping-term-ms = <150>;
+                bindings = <&kp N>, <&n_tilde>;
+                };
+
+                tdEuro: tap_dance_euro {
+                compatible = "zmk,behavior-tap-dance";
+                label = "TAP_DANCE_EURO";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp E>, <&euro_sign>;
+                };
+
+                //Starcraf tapdance
+
+                tdStarcraft: tap_dance_7 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "TAP_DANCE_7";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp K_MUTE>, <&tog 5>;
+                };
+
+                tdCSCrt1: tdCreateSelectCrt1 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCreateSelectCrt1";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp N1>, <&CreateCtrlGroup1>;
+                };
+
+                tdCSCrt2: tdCreateSelectCrt2 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCreateSelectCrt2";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp N2>, <&CreateCtrlGroup2>;
+                };
+
+                tdCSCrt3: tdCreateSelectCrt3 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCreateSelectCrt3";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp N3>, <&CreateCtrlGroup3>;
+                };
+
+                tdCSCrt4: tdCreateSelectCrt4 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCreateSelectCrt4";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp N4>, <&CreateCtrlGroup4>;
+                };
+
+                tdCSCrt5: tdCreateSelectCrt5 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCreateSelectCrt5";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp N5>, <&CreateCtrlGroup5>;
+                };
+
+                tdCSLoc1: tdCSLoc1 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCSLoc1";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp F5>, <&CreateLocation1>;
+                };
+
+                tdCSLoc2: tdCSLoc2 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCSLoc2";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp F6>, <&CreateLocation2>;
+                };
+
+                tdCSLoc3: tdCSLoc3 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCSLoc3";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp F7>, <&CreateLocation3>;
+                };
+
+                tdCSLoc4: tdCSLoc4 {
+                compatible = "zmk,behavior-tap-dance";
+                label = "tdCSLoc4";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp F8>, <&CreateLocation4>;
+                };
+        };
+
+        combos {
+                compatible = "zmk,combos";
+
+                comboTab {
+                bindings = <&kp TAB>;
+                key-positions = <13 14>;
+                };
+
+                comboCaps {
+                bindings = <&kp CAPSLOCK>;
+                key-positions = <12 13>;
+                };
+        };
+
         keymap {
                 compatible = "zmk,keymap";
 
