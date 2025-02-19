@@ -24,6 +24,7 @@
             low-power-enable;
         };
     };
+    
 
     spi0_default: spi0_default {
         group1 {
@@ -39,9 +40,11 @@
                 <NRF_PSEL(SPIM_MISO, 0, 25)>; 
             low-power-enable;
         };
-    };;
+    };
+
 
 };
+
 
 nice_view_spi: &spi0 {
     compatible = "nordic,nrf-spim";
