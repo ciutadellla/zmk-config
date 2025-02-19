@@ -463,37 +463,19 @@ nice_view_spi: &spi0 {
         };
 
         adjust_layer {
-            // -------------------------------------------------------------------------------------------------------
-            // | BRI+ | SAT+ | HUE+ | ANI+ | speed+ | RGB TOG |     | RESET |     |        |        |C_VOL_DN|C_VOL_UP|
-            // | BRI- | SAT- | HUE- | ANI+ | speed- | EP_TOG  |     |       |     |        |        |C_BRI_DN|C_BRI_UP|
-            // |      |      |      |      |        |         |     | none  |     |        |  LANG  | 
-            //                                      |         |     |       |     |        |
+        // -----------------------------------------------------------------------------------------
+        // | RGB BRI+ | RGB SAT+ | RGB HUE+ | RGB ANI+ |    | RGB TOG |   |  BT1  | BT2 | BT3 | BT4 | BT5 | BT CLR |
+        // | RGB BRI- | RGB SAT- | RGB HUE- | RGB ANI- |    |         |   |       |     |     |     |     |        |
+        // |          |          |          |          |    |         |   | RESET |     |     |     |     |        |
+        //                                              |     |     |     |     |     |
+                bindings = <
+                        &rgb_ug RGB_BRI &rgb_ug RGB_SAI &rgb_ug RGB_HUI &rgb_ug RGB_EFF &none &rgb_ug RGB_TOG    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_CLR
+                        &rgb_ug RGB_BRD &rgb_ug RGB_SAD &rgb_ug RGB_HUD &rgb_ug RGB_EFR &none &none              &none        &none        &none        &none        &none        &none
+                        &none           &none           &none           &none           &none &none              &sys_reset       &none        &none        &none        &none        &none
+                                                                                &trans      &trans       &tog 3        &trans      &trans
+                >;
 
-            bindings = <
-                &rgb_ug RGB_BRI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_EFF  &rgb_ug RGB_SPI  &rgb_ug RGB_TOG            &sys_reset  &none   &none   &none  &kp C_VOL_DN  &kp C_VOLUME_UP
-                &rgb_ug RGB_BRD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_EFR  &rgb_ug RGB_SPD  &ext_power EP_TOG          &none   &none   &none   &none  &kp C_BRI_DN  &kp C_BRI_UP
-                &trans  &none            &none            &none            &none            &none                      &none   &none   &none   &none  &trans        &trans
-                                                                                &trans           &trans                              &trans          &trans  &trans
-            >;
-
-            sensor-bindings = <&inc_dec_kp PG_DN PG_UP>;
-        };
-
-        bt_layer {
-            // --------------------------------------------------------------------------------------------
-            // |  BT1  | BT2    | BT3 | BT4 | BT5 | BT CLR |      |      |        |     |     |     |     |
-            // |       |        |     |     |     |        |      |      |        |     |     |     |     |
-            // |       |        |     |     |     |        |      |      |        |     |     |     |     |
-            //                              |     |        |      |      |        |
-
-            bindings = <
-                &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR         &none  &kp N7  &kp N8  &kp N9  &none  &trans
-                &none         &none         &none         &none         &none         &none              &none  &kp N4  &kp N5  &kp N6  &none  &none
-                &none         &none         &none         &none         &none         &none              &none  &kp N1  &kp N2  &kp N3  &none  &none
-                                                        &none         &none                     &none         &none   &kp N0
-            >;
-
-            sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
+                sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
         };
 
 
