@@ -23,7 +23,7 @@ devcontainer up --workspace-folder "/Users/ciutadellla/playgroud/dockerzmk/zmk"
 
 
 ```shell
-docker exec -w /workspaces/zmk -it 34942d281bf9 /bin/bash
+docker exec -w /workspaces/zmk -it 51bc9efbb6b9 /bin/bash
 
 west init -l app/
 west update  
