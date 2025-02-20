@@ -26,6 +26,7 @@ static void set_layer_symbol(lv_obj_t *label, struct layer_status_state state) {
     if (state.label == NULL) {
         char text[7] = {};
 
+        sprintf(text, "LAYER_BONGO %i", state->layer_index);
         sprintf(text, "%i", state.index);
 
         lv_label_set_text(label, text);

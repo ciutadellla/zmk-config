@@ -26,9 +26,15 @@ west init -l app/
 west update  
 ```
 
+# fssnive_view and nice_view_bongo has 2 displaywidgets costum or normal
+
 ```shell
 cd app
 
-west build -p -b nice_nano_v2 -- -DSHIELD="reviung41 nice_view_adapter nice_view" -DZMK_CONFIG="/workspaces/zmk-config/config" -DZMK_EXTRA_MODULES="/workspaces/zmk-config/modules/zmk-helpers"
+west build -p -b nice_nano_v2 -- -DSHIELD="reviung41 nice_view_adapter nice_view" -DZMK_CONFIG="/workspaces/zmk-config/config" -DZMK_EXTRA_MODULES="/workspaces/zmk-config/config/zmk-helpers"
+
+
+west build -p -b nice_nano_v2 -- -DSHIELD="reviung41 nice_view_adapter nice_view_bongo" -DZMK_CONFIG="/workspaces/zmk-config/config" -DZMK_EXTRA_MODULES="/workspaces/zmk-config/config/zmk-helpers"
 
 ```
+
