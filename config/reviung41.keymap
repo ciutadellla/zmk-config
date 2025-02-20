@@ -22,7 +22,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 / {
     macros {
         cut: zcut {
-            label = "cut";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -35,7 +34,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         copy: zcopy {
-            label = "copy";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -48,7 +46,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         paste: zpaste {
-            label = "paste";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -61,7 +58,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateCtrlGroup1: CreateCtrlGroup1 {
-            label = "CreateCtrlGroup1";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -74,7 +70,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateCtrlGroup2: CreateCtrlGroup2 {
-            label = "CreateCtrlGroup2";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -87,7 +82,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateCtrlGroup3: CreateCtrlGroup3 {
-            label = "CreateCtrlGroup3";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -100,7 +94,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateCtrlGroup4: CreateCtrlGroup4 {
-            label = "CreateCtrlGroup4";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -113,7 +106,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateCtrlGroup5: CreateCtrlGroup5 {
-            label = "CreateCtrlGroup5";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -126,7 +118,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateLocation1: CreateLocation1 {
-            label = "CreateLocation1";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -139,7 +130,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateLocation2: CreateLocation2 {
-            label = "CreateLocation2";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -152,7 +142,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateLocation3: CreateLocation3 {
-            label = "CreateLocation3";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -165,7 +154,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
         };
 
         CreateLocation4: CreateLocation4 {
-            label = "CreateLocation4";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -181,7 +169,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
     behaviors {
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick-tap-ms = <175>;                // repeat on tap-into-hold
@@ -191,7 +178,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         lh_pht: left_hand_positional_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "POSITIONAL_HOLD_TAP";
             #binding-cells = <2>;
             flavor = "tap-unless-interrupted";
             tapping-term-ms = <100>;                        // <---[[produces tap if held longer than tapping-term-ms]]
@@ -203,7 +189,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         bhm: balanced_homerow_mods {
             compatible = "zmk,behavior-hold-tap";
-            label = "BALANCED_HOMEROW_MODS";
             #binding-cells = <2>;
             tapping-term-ms = <200>;    // <---[[moderate duration]]
             quick-tap-ms = <0>;
@@ -213,7 +198,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdTabCaps: tap_dance_2 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp TAB>, <&kp CAPS>;
@@ -221,7 +205,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdTilde: tap_dance_tilde {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_TILDE";
             #binding-cells = <0>;
             tapping-term-ms = <150>;
             bindings = <&kp N>, <&n_tilde>;
@@ -229,7 +212,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdEuro: tap_dance_euro {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_EURO";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp E>, <&euro_sign>;
@@ -239,7 +221,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdStarcraft: tap_dance_7 {
             compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_7";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp K_MUTE>, <&tog 5>;
@@ -247,7 +228,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSCrt1: tdCreateSelectCrt1 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCreateSelectCrt1";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp N1>, <&CreateCtrlGroup1>;
@@ -255,7 +235,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSCrt2: tdCreateSelectCrt2 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCreateSelectCrt2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp N2>, <&CreateCtrlGroup2>;
@@ -263,7 +242,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSCrt3: tdCreateSelectCrt3 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCreateSelectCrt3";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp N3>, <&CreateCtrlGroup3>;
@@ -271,7 +249,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSCrt4: tdCreateSelectCrt4 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCreateSelectCrt4";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp N4>, <&CreateCtrlGroup4>;
@@ -279,7 +256,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSCrt5: tdCreateSelectCrt5 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCreateSelectCrt5";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp N5>, <&CreateCtrlGroup5>;
@@ -287,7 +263,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSLoc1: tdCSLoc1 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCSLoc1";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp F5>, <&CreateLocation1>;
@@ -295,7 +270,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSLoc2: tdCSLoc2 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCSLoc2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp F6>, <&CreateLocation2>;
@@ -303,7 +277,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSLoc3: tdCSLoc3 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCSLoc3";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp F7>, <&CreateLocation3>;
@@ -311,7 +284,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
 
         tdCSLoc4: tdCSLoc4 {
             compatible = "zmk,behavior-tap-dance";
-            label = "tdCSLoc4";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp F8>, <&CreateLocation4>;
