@@ -60,10 +60,8 @@ RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5) RC(5,0) RC(5,1) RC(5,2) RC(5,3) 
 
 	encoder: encoder {
 		compatible = "alps,ec11";
-		label = "ENCODER";
-		a-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;//gpio1 1 is P1.01 (101)
-		b-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;//gpio1 2 is P1.02 (102)
-		// resolution = <4>;
+		a-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		b-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         steps = <60>;
 	};
 
