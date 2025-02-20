@@ -6,9 +6,9 @@ if(CONFIG_ZMK_DISPLAY AND CONFIG_NICE_VIEW_WIDGET_STATUS)
   zephyr_library_sources(widgets/bolt.c)
   zephyr_library_sources(widgets/util.c)
 
-  
-  # zephyr_library_sources(widgets/bongo_cat.c)
-  # zephyr_library_sources(widgets/bongo_cat_images.c)
+   zephyr_library_sources(widgets/cat.c)
+ # zephyr_library_sources(widgets/bongo_cat.c)
+ # zephyr_library_sources(widgets/bongo_cat_images.c)
 
   if(NOT CONFIG_ZMK_SPLIT OR CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
     zephyr_library_sources(widgets/status.c)
