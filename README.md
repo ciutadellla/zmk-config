@@ -21,7 +21,6 @@ devcontainer up --workspace-folder "/Users/ciutadellla/playgroud/dockerzmk/zmk"
 ```
 
 
-
 ```shell
 docker exec -w /workspaces/zmk -it 51bc9efbb6b9 /bin/bash
 
