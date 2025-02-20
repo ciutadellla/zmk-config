@@ -14,12 +14,10 @@ docker volume create --driver local -o o=bind -o type=none \
 docker volume create --driver local -o o=bind -o type=none \
   -o device="/Users/ciutadellla/playgroud/zmk-config/modules/" zmk-modules
 
-
 devcontainer up --workspace-folder "/Users/ciutadellla/playgroud/dockerzmk/zmk"
 
 
 ```
-
 
 ```shell
 docker exec -w /workspaces/zmk -it 51bc9efbb6b9 /bin/bash
