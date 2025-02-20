@@ -20,7 +20,7 @@ devcontainer up --workspace-folder "/Users/ciutadellla/playgroud/dockerzmk/zmk"
 ```
 
 ```shell
-docker exec -w /workspaces/zmk -it 51bc9efbb6b9 /bin/bash
+docker exec -w /workspaces/zmk -it 3fdfbdf50178 /bin/bash
 
 west init -l app/
 west update  
@@ -28,9 +28,7 @@ west update
 
 ```shell
 cd app
-```
 
-```shell
 west build -p -b nice_nano_v2 -- -DSHIELD="reviung41 nice_view_adapter nice_view" -DZMK_CONFIG="/workspaces/zmk-config/config" -DZMK_EXTRA_MODULES="/workspaces/zmk-config/modules/zmk-helpers"
 
 ```
