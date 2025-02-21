@@ -176,7 +176,6 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
             require-prior-idle-ms = <200>;
             flavor = "tap-unless-interrupted";
             hold-trigger-key-positions = <19 9 18 8 7 6 30 31 32 20 21 33 10 11 21 22 23 33 34 35>;
-            hold-while-undecided;
         };
 
         hm: homerow_mods {
@@ -316,10 +315,10 @@ ZMK_UNICODE_SINGLE(euro_sign, N2, N0, A, C)
             //                           DEL | LWR/BSPC | SPC/layer3 | RSE/RET  | GLOBE |
 
             bindings = <
-&none      &kp Q          &kp W               &kp E       &kp R       &kp T               &kp Y     &kp U       &kp I       &kp O                &kp P            &tdStarcraft
-&kp TILDE  &lht LSHIFT A  &hm LEFT_CONTROL S  &hm LALT D  &hm LGUI F  &kp G               &kp H     &hm RGUI J  &hm RALT K  &hm RIGHT_CONTROL L  &hm RSHIFT SEMI  &kp SQT
-&none      &kp Z          &kp X               &kp C       &kp V       &kp B               &tdTilde  &kp M       &kp COMMA   &kp DOT              &kp FSLH         &none
-                                              &lt 4 ESC   &lt 1 BSPC         &lt 3 SPACE            &lt 2 RET   &kp GLOBE
+&none      &kp Q          &kp W                &kp E        &kp R        &kp T               &kp Y     &kp U       &kp I       &kp O                &kp P            &tdStarcraft
+&kp TILDE  &lht LSHIFT A  &lht LEFT_CONTROL S  &lht LALT D  &lht LGUI F  &kp G               &kp H     &hm RGUI J  &hm RALT K  &hm RIGHT_CONTROL L  &hm RSHIFT SEMI  &kp SQT
+&none      &kp Z          &kp X                &kp C        &kp V        &kp B               &tdTilde  &kp M       &kp COMMA   &kp DOT              &kp FSLH         &none
+                                               &lt 4 ESC    &lt 1 BSPC          &lt 3 SPACE            &lt 2 RET   &kp GLOBE
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
